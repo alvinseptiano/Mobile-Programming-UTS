@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gfx/preview/hotel/newyork_hotel.png" type="Texture" id=1]
+[ext_resource path="res://src/PreviewSlot.gd" type="Script" id=2]
+
+[node name="Item" type="NinePatchRect"]
+margin_right = 148.0
+margin_bottom = 201.0
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+patch_margin_left = 100
+patch_margin_top = 100
+patch_margin_right = 48
+patch_margin_bottom = 100
+script = ExtResource( 2 )
+
+[node name="Img" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

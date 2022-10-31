@@ -1,0 +1,577 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://gfx/preview/flight/lax_airport.png" type="Texture" id=1]
+[ext_resource path="res://main_theme.tres" type="Theme" id=2]
+[ext_resource path="res://icon/home.png" type="Texture" id=3]
+[ext_resource path="res://icon/notification.png" type="Texture" id=4]
+[ext_resource path="res://icon/bookmark.png" type="Texture" id=5]
+[ext_resource path="res://icon/message.png" type="Texture" id=6]
+[ext_resource path="res://icon/bus.png" type="Texture" id=7]
+[ext_resource path="res://icon/hotel.png" type="Texture" id=8]
+[ext_resource path="res://icon/flight.png" type="Texture" id=9]
+[ext_resource path="res://icon/restaurant.png" type="Texture" id=10]
+[ext_resource path="res://font/Montserrat-Regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://font/Montserrat-Bold.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://gfx/profile.png" type="Texture" id=13]
+[ext_resource path="res://icon/back_btn.png" type="Texture" id=14]
+[ext_resource path="res://icon/cart.png" type="Texture" id=15]
+[ext_resource path="res://src/Preview.gd" type="Script" id=16]
+[ext_resource path="res://src/BottomNav.gd" type="Script" id=17]
+[ext_resource path="res://src/Popup.gd" type="Script" id=18]
+[ext_resource path="res://src/Main.gd" type="Script" id=19]
+[ext_resource path="res://src/TopNav.gd" type="Script" id=21]
+
+[sub_resource type="ShaderMaterial" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 13
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.4, 1, 1 )
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+
+[sub_resource type="DynamicFont" id=6]
+size = 18
+use_filter = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://font/Montserrat-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 18
+use_filter = true
+font_data = SubResource( 7 )
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0.110092, 1 )
+colors = PoolColorArray( 0.0812709, 0.0791931, 0.117188, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=10]
+gradient = SubResource( 9 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 15
+outline_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+use_filter = true
+font_data = ExtResource( 11 )
+
+[node name="Main" type="Node"]
+script = ExtResource( 19 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BG" type="ColorRect" parent="Control"]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Heading" type="HBoxContainer" parent="Control"]
+anchor_top = 0.072
+anchor_right = 1.0
+anchor_bottom = 0.072
+margin_left = 14.0
+margin_top = 0.135998
+margin_right = -14.0
+margin_bottom = 48.136
+custom_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/Heading"]
+margin_right = 149.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Let's start a vacation!"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Heading"]
+margin_left = 157.0
+margin_right = 272.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+alignment = 2
+
+[node name="Cart" type="Button" parent="Control/Heading/HBoxContainer"]
+margin_right = 55.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 15 )
+flat = true
+align = 2
+icon_align = 2
+expand_icon = true
+
+[node name="Profile" type="TextureRect" parent="Control/Heading/HBoxContainer"]
+margin_left = 59.0
+margin_right = 115.0
+margin_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+
+[node name="TopNav" type="HBoxContainer" parent="Control"]
+anchor_top = 0.186
+anchor_right = 1.0
+anchor_bottom = 0.186
+margin_left = 12.0
+margin_top = -0.232002
+margin_right = -12.0
+margin_bottom = 71.768
+custom_constants/separation = 4
+alignment = 1
+script = ExtResource( 21 )
+
+[node name="Flight" type="Button" parent="Control/TopNav"]
+margin_right = 66.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 9 )
+flat = true
+icon_align = 1
+expand_icon = true
+
+[node name="Hotel" type="Button" parent="Control/TopNav"]
+margin_left = 70.0
+margin_right = 136.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 8 )
+flat = true
+icon_align = 1
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Restaurant" type="Button" parent="Control/TopNav"]
+margin_left = 140.0
+margin_right = 206.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 10 )
+flat = true
+icon_align = 1
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Bus" type="Button" parent="Control/TopNav"]
+margin_left = 210.0
+margin_right = 276.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 7 )
+flat = true
+icon_align = 1
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="BottomNav" type="Panel" parent="Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -74.0
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 17 )
+
+[node name="List" type="HBoxContainer" parent="Control/BottomNav"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="Home" type="Button" parent="Control/BottomNav/List"]
+margin_right = 72.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 3 )
+flat = true
+icon_align = 1
+expand_icon = true
+
+[node name="Notification" type="Button" parent="Control/BottomNav/List"]
+margin_left = 76.0
+margin_right = 148.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 4 )
+flat = true
+icon_align = 1
+expand_icon = true
+
+[node name="Bookmark" type="Button" parent="Control/BottomNav/List"]
+margin_left = 152.0
+margin_right = 224.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 5 )
+flat = true
+icon_align = 1
+expand_icon = true
+
+[node name="Message" type="Button" parent="Control/BottomNav/List"]
+margin_left = 228.0
+margin_right = 300.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 6 )
+flat = true
+icon_align = 1
+expand_icon = true
+
+[node name="PreviewList" type="Control" parent="Control"]
+anchor_top = 0.308
+anchor_right = 1.0
+anchor_bottom = 0.83
+margin_left = 14.0
+margin_top = 41.304
+margin_right = -14.0
+margin_bottom = -24.96
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Scroll" type="ScrollContainer" parent="Control/PreviewList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_vertical_enabled = false
+
+[node name="List" type="HBoxContainer" parent="Control/PreviewList/Scroll"]
+margin_right = 272.0
+margin_bottom = 201.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 2
+alignment = 1
+
+[node name="Bookmark" type="Control" parent="Control" groups=["popup"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 18 )
+
+[node name="Bg" type="ColorRect" parent="Control/Bookmark"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Top" type="HBoxContainer" parent="Control/Bookmark"]
+anchor_top = 0.057
+anchor_right = 1.0
+anchor_bottom = 0.057
+margin_left = 14.0
+margin_top = -0.184002
+margin_right = -14.0
+margin_bottom = 72.816
+
+[node name="Back" type="Button" parent="Control/Bookmark/Top"]
+margin_right = 126.0
+margin_bottom = 73.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 14 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Control/Bookmark/Top"]
+margin_left = 130.0
+margin_top = 20.0
+margin_right = 272.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Bookmark"
+valign = 1
+
+[node name="Checkout" type="Control" parent="Control" groups=["popup"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 18 )
+
+[node name="Bg" type="ColorRect" parent="Control/Checkout"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Top" type="HBoxContainer" parent="Control/Checkout"]
+anchor_top = 0.057
+anchor_right = 1.0
+anchor_bottom = 0.057
+margin_left = 14.0
+margin_top = -0.184002
+margin_right = -14.0
+margin_bottom = 72.816
+
+[node name="Back" type="Button" parent="Control/Checkout/Top"]
+margin_right = 134.0
+margin_bottom = 73.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 14 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Control/Checkout/Top"]
+margin_left = 138.0
+margin_top = 20.0
+margin_right = 272.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Checkout"
+valign = 1
+
+[node name="Notification" type="Control" parent="Control" groups=["popup"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 18 )
+
+[node name="Bg" type="ColorRect" parent="Control/Notification"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Control/Notification/Bg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "No notification"
+align = 1
+valign = 1
+
+[node name="Top" type="HBoxContainer" parent="Control/Notification"]
+anchor_top = 0.057
+anchor_right = 1.0
+anchor_bottom = 0.057
+margin_left = 14.0
+margin_top = -0.184002
+margin_right = -14.0
+margin_bottom = 72.816
+
+[node name="Back" type="Button" parent="Control/Notification/Top"]
+margin_right = 108.0
+margin_bottom = 73.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 14 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Control/Notification/Top"]
+margin_left = 112.0
+margin_top = 20.0
+margin_right = 272.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Notification"
+valign = 1
+
+[node name="Message" type="Control" parent="Control" groups=["popup"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 18 )
+
+[node name="Bg" type="ColorRect" parent="Control/Message"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Top" type="HBoxContainer" parent="Control/Message"]
+anchor_top = 0.057
+anchor_right = 1.0
+anchor_bottom = 0.057
+margin_left = 14.0
+margin_top = -0.184002
+margin_right = -14.0
+margin_bottom = 72.816
+
+[node name="Back" type="Button" parent="Control/Message/Top"]
+margin_right = 108.0
+margin_bottom = 73.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 14 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Control/Message/Top"]
+margin_left = 112.0
+margin_top = 20.0
+margin_right = 272.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Message"
+valign = 1
+
+[node name="Preview" type="Control" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BG" type="ColorRect" parent="Control/Preview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Img" type="TextureRect" parent="Control/Preview"]
+anchor_right = 1.0
+margin_bottom = 429.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Fade" type="NinePatchRect" parent="Control/Preview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -256.0
+texture = SubResource( 10 )
+
+[node name="Top" type="HBoxContainer" parent="Control/Preview"]
+anchor_top = 0.057
+anchor_right = 1.0
+anchor_bottom = 0.057
+margin_left = 14.0
+margin_top = -0.184002
+margin_right = -14.0
+margin_bottom = 72.816
+
+[node name="Back" type="Button" parent="Control/Preview/Top"]
+margin_right = 134.0
+margin_bottom = 73.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 14 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Control/Preview/Top"]
+margin_left = 138.0
+margin_top = 25.0
+margin_right = 272.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "LAX Airport"
+valign = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Control/Preview"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -70.0
+margin_right = -16.0
+margin_bottom = -10.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Price" type="Button" parent="Control/Preview/Buttons"]
+margin_right = 129.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "$25"
+
+[node name="Book" type="Button" parent="Control/Preview/Buttons"]
+margin_left = 139.0
+margin_right = 268.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Book"
+icon_align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Preview"]
+anchor_top = 0.557
+anchor_right = 1.0
+anchor_bottom = 0.838
+margin_left = 16.0
+margin_top = -0.184021
+margin_right = -14.0
+margin_bottom = -0.0560303
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_fonts/normal_font = SubResource( 11 )
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
